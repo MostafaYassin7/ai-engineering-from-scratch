@@ -32,15 +32,22 @@ The part the fast plan skipped. This is the differentiator.
 about 2 hours a week alongside the main work. Same total hours, but you start
 seeing results in week one instead of week three. Look for the 📐 markers.
 
-## Block 0 — Finish Phase 0 (~4 hrs)
+## Block 0 — Finish Phase 0 (~3 hrs) — ✅ DONE 2026-08-11
 
-- [ ] 04 APIs & Keys — **skim.** `.env`, HTTP, secrets already known. Read only:
-      `max_tokens` required, `messages` is stateless (you resend history every call),
-      tokens are the billing unit, rate limits cap tokens/min not just requests
-- [ ] 05 Jupyter Notebooks — **do**
-- [ ] 09 Data Management — **do**
-- [ ] 12 Debugging & Profiling — **do**
-- [ ] Skip 06, 07, 08, 10, 11 — Python envs, Docker, editor, terminal, Linux
+- [x] 04 APIs & Keys — **skimmed.** `.env`, HTTP, secrets already known. The five
+      LLM-specific bits: `max_tokens` is required, `messages` is stateless (you
+      resend the whole history every call), tokens are the billing unit with output
+      costing more, rate limits cap tokens/min not just requests, streaming exists
+      because long responses take 30s+
+- [x] 05 Jupyter Notebooks — kernel holds state, cells run out of order,
+      Restart & Run All before committing, explore in notebooks / ship in scripts
+- [x] 09 Data Management — HF `datasets`, train/val/test splits, seeds, why you
+      shuffle before splitting (IMDB ships sorted by label), Parquet vs CSV
+- [x] Skipped 06, 07, 08, 10, 11 — Python envs, Docker, editor, terminal, Linux
+- [→] **12 Debugging & Profiling — moved to end of Block 3.** It lists "basic
+      PyTorch familiarity" as a prerequisite and its exercises assume training
+      loops, tensors, gradients, and NaN losses. Doing it before Phase 3 would be
+      learning tools for problems never encountered.
 
 ## Block 1 — Core math only (~8 hrs, 8 of 22 lessons)
 
@@ -84,7 +91,7 @@ question), **10** (bias/variance), **17** (imbalanced data). These are the ones
 that make you good at judging whether an AI system actually works, which is the
 core skill of an AI engineer and the thing most newcomers cannot do.
 
-## Block 3 — Phase 3: Deep Learning Core (~15 hrs + 3 hrs math, all 13 lessons)
+## Block 3 — Phase 3: Deep Learning Core (~16 hrs + 3 hrs math, 13 lessons + 1 deferred)
 
 **📐 Math side track (~3 hrs)**
 
@@ -100,6 +107,12 @@ working autograd engine you wrote yourself. Push it as its own repo with a
 README explaining the design. Very few applicants have one.
 
 Lessons 11 (PyTorch) and 13 (Debugging Neural Networks) are the practical payoff.
+
+- [ ] **Then: Phase 0 / 12 — Debugging & Profiling** (~75 min, deferred from
+      Block 0). Pairs directly with Phase 3 / 13 — same subject from the tooling
+      side: `breakpoint()` in a training loop, `cProfile`, `tracemalloc`,
+      TensorBoard, and catching NaN losses and wrong-device tensors. Only makes
+      sense once you've written a training loop and had one fail silently.
 
 ---
 
